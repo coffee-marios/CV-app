@@ -1,16 +1,20 @@
-import General from "./General";
 import Education from "./Education";
 import Experience from "./Experience";
+import General from "./General";
 
-export default function Form() {
+import "../styles/FormContainer.css";
+
+import { useState } from "react";
+
+export default function FormContainer() {
   function submit(e) {
     console.log(e);
   }
   return (
-    <form action={submit}>
+    <div className="container-form">
       <General />
       <Education />
       <Experience />
-    </form>
+    </div>
   );
 }
