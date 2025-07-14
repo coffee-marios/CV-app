@@ -13,6 +13,7 @@ export default function FormContainer() {
   return (
     <div className="container-form">
       <General />
+
       <Education />
       <Experience />
     </div>

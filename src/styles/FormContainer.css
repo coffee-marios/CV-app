@@ -1,5 +1,5 @@
 .container-form {
-    background-color: pink;
+    background-color: blueviolet;
     max-width: fit-content;
     padding: 1rem;
     display: flex;
@@ -11,4 +11,9 @@
 form {
     border: 0.4px black solid;
     padding: 0.8rem 2rem 3rem 0.5rem;
+    background-color: pink;
+}
+
+.info-general {
+    background-color: aliceblue;
 }
