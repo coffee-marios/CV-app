@@ -1,25 +1,35 @@
 import { useState } from "react";
 
 function Experience() {
+  const [editVisible, setVisible] = useState(true);
   const [experience, setExperience] = useState({
-    companyName: "Nasa",
-    position: "president",
+    companyName: "",
+    position: "",
     main_responsibility: "",
   });
 
   function submit(e) {
     e.preventDefault();
-    console.log(e);
+    setVisible(!editVisible);
   }
+
   function handleChange(e) {
     const { name, value } = e.target;
     setExperience((prev) => ({ ...prev, [name]: value }));
   }
+
+  function editGeneral() {
+    setVisible(!editVisible);
+  }
+
   return (
     <div>
       <p>EXPERIENCE</p>
 
-      <form className="form-general" action={submit}>
+      <form
+        className={editVisible ? "form-general" : "visible-general"}
+        onSubmit={submit}
+      >
         <p>Company name:</p>
         <input
           type="text"
@@ -45,11 +55,22 @@ function Experience() {
         <br />
         <button type="submit">Save</button>
       </form>
-      <div className="info-general">
-        <p>Company name: {experience.companyName}</p>
-        <p>Position title: {experience.position}</p>
+      <div
+        className={
+          editVisible ? "info-general visible-general" : "info-general"
+        }
+      >
+        <p>
+          Company name: <span>{experience.companyName}</span>
+        </p>
+        <p>
+          Position title: <span>{experience.position}</span>{" "}
+        </p>
         <p>Main responsibilities of your job:</p>
-        <p>{experience.main_responsibility}</p>
+        <p>
+          <span>{experience.main_responsibility}</span>
+        </p>
+        <button onClick={editGeneral}>Edit</button>
       </div>
     </div>
   );

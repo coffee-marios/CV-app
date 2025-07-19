@@ -1,3 +1,7 @@
+body {
+    background-color: antiquewhite;
+}
+
 .container-form {
     background-color: blueviolet;
     max-width: fit-content;
@@ -16,4 +20,18 @@ form {
 
 .info-general {
     background-color: aliceblue;
+    padding: 0.8rem 2rem 3rem 0.5rem;
+    font-weight: bold;
+}
+
+span {
+    font-weight: normal;
+}
+
+button {
+    margin-top: 2rem;
+}
+
+.visible-general {
+    display: none;
 }

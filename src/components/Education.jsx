@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 function Education() {
+  const [editEducationVisual, setEditVisual] = useState(true);
+
   const [education, setEducation] = useState({
-    schoolName: "LOL",
-    titleStudy: "PHD",
-    dateStudy: "2020-2024",
+    schoolName: "",
+    titleStudy: "",
+    dateStudy: "",
     yearsStudy: { startStudy: "", endStudy: "" },
   });
 
@@ -14,6 +16,7 @@ function Education() {
   }
   function submit(e) {
     e.preventDefault();
+    setEditVisual(!editEducationVisual);
     console.log(e);
   }
   function handleYears(e) {
@@ -27,10 +30,17 @@ function Education() {
     }));
   }
 
+  function editEducation() {
+    setEditVisual(!editEducationVisual);
+  }
+
   return (
     <div>
       <p>EDUCATION</p>
-      <form className="form-general" onSubmit={submit}>
+      <form
+        className={editEducationVisual ? "form-general" : "visible-general"}
+        onSubmit={submit}
+      >
         <p>School name:</p>
         <input
           type="text"
@@ -70,13 +80,24 @@ function Education() {
         <button type="submit">Save</button>
       </form>
 
-      <div className="info-general">
-        <p>School name: {education.schoolName}</p>
-        <p>Title of study: {education.titleStudy}</p>
+      <div
+        className={
+          editEducationVisual ? "info-general visible-general" : "info-general"
+        }
+      >
         <p>
-          Study years: {education.yearsStudy.startStudy} -{" "}
-          {education.yearsStudy.endStudy}
+          School name: <span>{education.schoolName}</span>
         </p>
+        <p>
+          Title of study: <span>{education.titleStudy}</span>
+        </p>
+        <p>
+          Study years:{" "}
+          <span>
+            {education.yearsStudy.startStudy} - {education.yearsStudy.endStudy}
+          </span>
+        </p>
+        <button onClick={editEducation}>Edit</button>
       </div>
     </div>
   );
