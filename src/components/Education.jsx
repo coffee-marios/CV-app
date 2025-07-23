@@ -3,11 +3,14 @@ import { useState } from "react";
 function Education() {
   const [editEducationVisual, setEditVisual] = useState(true);
 
+  const date = new Date();
+  const year = date.getFullYear();
+
   const [education, setEducation] = useState({
     schoolName: "",
     titleStudy: "",
     dateStudy: "",
-    yearsStudy: { startStudy: "", endStudy: "" },
+    yearsStudy: { startStudy: "1999", endStudy: "1999" },
   });
 
   function handleChange(e) {
@@ -36,44 +39,58 @@ function Education() {
 
   return (
     <div>
-      <p>EDUCATION</p>
+      <h1 className="form-title">EDUCATION</h1>
       <form
         className={editEducationVisual ? "form-general" : "visible-general"}
         onSubmit={submit}
       >
         <p>School name:</p>
+        <label htmlFor="schoolName"> </label>
+
         <input
           type="text"
           name="schoolName"
           value={education.schoolName}
           onChange={handleChange}
+          required
         />
         <p>Title of study:</p>
+        <label htmlFor="titleStudy"> </label>
+
         <input
           type="text"
           name="titleStudy"
           value={education.titleStudy}
           onChange={handleChange}
+          required
         />
 
         <p>Years of highest education:</p>
-        <p>First year:</p>
+        <p></p>
+        <label htmlFor="startStudy">First year: </label>
+
         <input
           type="number"
           name="startStudy"
-          value={education.yearsStudy.firstYear}
+          value={education.yearsStudy.startStudy}
           onChange={handleYears}
           min="1999"
+          max={year}
           step="1"
+          required
         />
-        <p>Last year</p>
+        <p></p>
+        <label htmlFor="endStudy">Final year: </label>
+
         <input
           type="number"
           name="endStudy"
-          value={education.yearsStudy.firstYear}
+          value={education.yearsStudy.endStudy}
           onChange={handleYears}
-          min="1999"
+          min={education.yearsStudy.startStudy}
+          max={year}
           step="1"
+          required
         />
 
         <br />

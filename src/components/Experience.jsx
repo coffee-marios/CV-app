@@ -24,13 +24,15 @@ function Experience() {
 
   return (
     <div>
-      <p>EXPERIENCE</p>
+      <h1 className="form-title">EXPERIENCE</h1>
 
       <form
         className={editVisible ? "form-general" : "visible-general"}
         onSubmit={submit}
       >
         <p>Company name:</p>
+        <label htmlFor="companyName"> </label>
+
         <input
           type="text"
           name="companyName"
@@ -38,6 +40,8 @@ function Experience() {
           onChange={handleChange}
         />
         <p>Position title:</p>
+        <label htmlFor="position"> </label>
+
         <input
           type="text"
           name="position"
@@ -45,6 +49,8 @@ function Experience() {
           onChange={handleChange}
         />
         <p>Main responsibilities of your job:</p>
+        <label htmlFor="main_responsibility"> </label>
+
         <textarea
           type="text"
           name="main_responsibility"

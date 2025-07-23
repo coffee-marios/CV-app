@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-function General() {
+function General({ general, setGeneral }) {
   const [editVisible, setVisible] = useState(true);
-  const [general, setGeneral] = useState({
-    firstName: "",
-    lastName: "",
-    age: 21,
-    email: "",
-    phone: "",
-  });
+  // const [general, setGeneral] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   age: 21,
+  //   email: "",
+  //   phone: "",
+  // });
 
   function submit(e) {
     e.preventDefault();
@@ -26,7 +26,7 @@ function General() {
 
   return (
     <div>
-      <p>GENERAL INFORMATION</p>
+      <h1 className="form-title">USER</h1>
 
       <form
         className={editVisible ? "form-general" : "visible-general"}
@@ -40,6 +40,7 @@ function General() {
           name="firstName"
           value={general.firstName}
           onChange={handleChange}
+          required
         />
         <p>Last name:</p>
         <label htmlFor="lastName"></label>
@@ -49,6 +50,7 @@ function General() {
           name="lastName"
           value={general.lastName}
           onChange={handleChange}
+          required
         />
         <p>Age:</p>
         <label htmlFor="age"></label>
@@ -61,25 +63,30 @@ function General() {
           max="60"
           value={general.age}
           onChange={handleChange}
+          required
         />
         <p>e-mail:</p>
         <label htmlFor="email"></label>
         <input
-          type="text"
+          type="email"
           id="email"
           name="email"
           value={general.email}
           onChange={handleChange}
+          required
         />
         <p>Phone number:</p>
         <label htmlFor="phone"></label>
 
         <input
-          type="text"
+          type="tel"
           id="phone"
           name="phone"
           value={general.phone}
           onChange={handleChange}
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          placeholder="123-4567-8901"
+          required
         />
         <br />
         <button type="submit">Save</button>
